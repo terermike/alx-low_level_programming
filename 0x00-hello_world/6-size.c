@@ -10,6 +10,7 @@
  * Return: 0 if it is a success
  */
 int main(void)
+
 {
 	int i;
 	float f;
