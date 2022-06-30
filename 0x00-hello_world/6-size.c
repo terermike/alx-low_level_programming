@@ -1,5 +1,4 @@
 #include <stdio.h>
-int main(void)
 /**
  * main - Main function
  * @i: First operand
@@ -10,6 +9,7 @@ int main(void)
  *
  * Return: 0 if it is a success
  */
+int main(void)
 {
 	int i;
 	float f;
