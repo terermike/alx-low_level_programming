@@ -12,11 +12,11 @@
 int main(void)
 
 {
-	int i;
-	float f;
-	char c;
-	long int l;
-	long long int b;
+	char a;
+	int b;
+	long int c;
+	long long int d;
+	float e;
 
 	printf("Size of a char: %i byte(s)\n", sizeof(char));
 	printf("Size of an int: %i byte(s)\n", sizeof(int));
