@@ -3,7 +3,6 @@
 #include <stdio.h>
 /**
  * main - The commands are ran in the main function
- *@n: variable to be generated at random
  *
  * Return: returns 0 if it runs successfully
  */
