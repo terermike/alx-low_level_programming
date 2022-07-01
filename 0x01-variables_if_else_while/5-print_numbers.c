@@ -1,16 +1,17 @@
 #include <stdio.h>
 /**
- * main - main function
+ * main - main functions
  *
- *Return:  0 if it is a success
+ * Return: 0 shows success
  */
-int main()
+int main(void)
 {
-	int i = 0;
 
-	for (i = 0; i > 10; i++);
+	int i;
+	for (i = 0; i < 10; i++)
 	{
-	printf("%d \n", i);
+	printf("%d", i);
 	}
-
+	printf("\n");
+	return (0);
 }
