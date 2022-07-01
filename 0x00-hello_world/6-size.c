@@ -1,23 +1,12 @@
 #include <stdio.h>
 /**
  * main - Main function
- * @i: First operand
- * @f: Second operand
- * @c: Third operand
- * @l: Fourth operand
- * @b: Fifth operand
  *
  * Return: 0 if it is a success
  */
 int main(void)
 
 {
-	char a;
-	int b;
-	long int c;
-	long long int d;
-	float e;
-
 	printf("Size of a char: %i byte(s)\n", sizeof(char));
 	printf("Size of an int: %i byte(s)\n", sizeof(int));
 	printf("Size of a long int: %i byte(s)\n", sizeof(long int));
