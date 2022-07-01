@@ -3,6 +3,9 @@
 #include <stdio.h>
 /**
  * main - The commands are ran in the main function
+ *@n: variable to be generated at random
+ *
+ * Return: returns 0 if it runs successfully
  */
 int main(void)
 {
@@ -10,11 +13,11 @@ int main(void)
 
 	srand(time(0));
 	n = rand() - RAND_MAX / 2;
-	if(n > 0)
+	if (n > 0)
 	{
 	printf("%d is positive\n", n);
 	}
-	else if(n == 0)
+	else if (n == 0)
 	{
 	printf("%d is zero\n", n);
 	}
