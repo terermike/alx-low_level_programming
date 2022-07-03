@@ -23,7 +23,7 @@ int main(void)
 	putchar(j);
 	putchar(k);
 	if (i != 55)
-	{	
+	{
 	putchar(32);
 	}
 	}
