@@ -1,34 +1,31 @@
 #include <stdio.h>
-#include <stdlib.h>
 /**
- * main - Entry point
+ * main - main function
  *
- * Return: Always 0 (Success)
- */
+ * Return: 0 if a success
+*/
+
 int main(void)
 {
-	int i;
-	int j;
-	int k;
-
-	for (i = 48; i <= 57; i++)
+	int digit_1;
+	int digit_2;
+	int digit_3;
+	
+	for (digit_1 = 0; digit_1 <= 9; digit_1++)
 	{
-	for (j = 48; j <= 57; j++)
-	{
-	for (k = 48; k <= 57; k++)
-	{
-	if (j > i && k > j)
-	{
-	putchar(i);
-	putchar(j);
-	putchar(k);
-	if (i != 55)
-	{
-	putchar(32);
-	}
-	}
-	}
-	}
+		for (digit_2 = 0; digit_2 <= 9; digit_2++)
+		{
+			for (digit_3 = 0; digit_3 <= 9; digit_3++)
+			{
+			putchar((digit_1 % 10) + '0');
+			putchar((digit_2 % 10) + '0');
+			putchar((digit_3 % 10) + '0');
+				if ( digit_1 == 7 && digit_2 == 8 && digit_3 ==9)
+					continue;
+				putchar(',');
+				putchar(' ');
+			}
+		}
 	}
 	putchar('\n');
 	return (0);
