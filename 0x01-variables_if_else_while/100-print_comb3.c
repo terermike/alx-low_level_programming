@@ -1,9 +1,9 @@
 #include <stdio.h>
 /**
-* main -  main function
-*
-* Return: returns 0 if the program runs successfully
-*/
+ * main - main function
+ *
+ * Return: 0 if successful
+ */
 int main(void)
 {
 	int digit_1;
@@ -13,14 +13,12 @@ int main(void)
 	{
 		for (digit_2 = digit_1 + 1; digit_2 <= 9; digit_2++)
 		{
-			putchar((digit_1 % 10) + '0');
-			putchar((digit_2 % 10) + '0');
-			if (digit_1 == 8 && digit_2 == 9)
-				continue;
-			putchar (',');
-			putchar (' ');
+		putchar((digit_1 % 10) + '0' );
+		putchar((digit_2 % 10) + '0');
+		putchar (',');
+		putchar (' ');
 		}
 	}
 	putchar('\n');
-	return (0);
+	return(0);
 }
