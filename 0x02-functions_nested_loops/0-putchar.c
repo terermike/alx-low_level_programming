@@ -1,10 +1,10 @@
 #include "main.h"
 /**
- * main- prints whats the string
+ * main - main function
  *
- * Return:0 if successful 
+ * Return: 0 if a success
  */
-void printsomething(void)
+int main(void)
 {
 	_putchar('_');
 	_putchar('p');
