@@ -1,10 +1,10 @@
 #include "main.h"
 /**
- * printsomething- prints whats the string
+ * main- prints whats the string
  *
- * Return: nothing
+ * Return:0 if successful 
  */
-int main(void)
+void printsomething(void)
 {
 	_putchar('_');
 	_putchar('p');
@@ -15,4 +15,5 @@ int main(void)
 	_putchar('a');
 	_putchar('r');
 	_putchar('\n');
+	return (0);
 }
