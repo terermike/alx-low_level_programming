@@ -1,8 +1,18 @@
-#include <stdio.h>
-
-int main(void)
+#include "main.h"
+/**
+ * printsomething- prints whats the string
+ *
+ * Return: nothing
+ */
+void printsomething(void)
 {
-	char ch[8] = "_putchar";
-	printf("%s\n", ch);
-return (0);
-}
+	_putchar('_');
+	_putchar('p');
+	_putchar('u');
+	_putchar('t');
+	_putchar('c');
+	_putchar('h');
+	_putchar('a');
+	_putchar('r');
+	_putchar('\n');
+}	
