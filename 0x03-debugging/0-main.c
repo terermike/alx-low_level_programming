@@ -11,7 +11,7 @@ int main(void)
 
         i = 0;
 
-	void positive_or_negative(int i);
+	positive_or_negative(int i);
 
         return (0);
 }
