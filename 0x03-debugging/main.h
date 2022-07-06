@@ -2,7 +2,7 @@
 #define MAIN_H
 
 #include <stdio.h>
-int largest_number(int a, int b, int c);
 positive_or_negative(int i);
+largest = largest_number(a, b, c);
 
 #endif /* MAIN_H */
