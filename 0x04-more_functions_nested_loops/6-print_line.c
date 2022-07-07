@@ -1,7 +1,8 @@
 #include "main.h"
-/* print_line - prints _ according to n
- *@n: an int parameter
- *Return: nothing
+/**
+ * print_line - prints a line
+ * @n: an int parameter
+ * Return: nothing
  */
 void print_line(int n)
 {
