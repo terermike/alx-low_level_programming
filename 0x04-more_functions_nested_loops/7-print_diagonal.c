@@ -8,7 +8,7 @@ void print_diagonal(int n)
 {
 	int i;
 
-	i = o;
+	i = 0;
 	while (i < n)
 	{
 		_putchar('/');
