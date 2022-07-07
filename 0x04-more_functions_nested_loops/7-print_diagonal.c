@@ -11,7 +11,10 @@ void print_diagonal(int n)
 	i = 0;
 	while (i < n)
 	{
-		_putchar('/');
+		if (n <= 0)
+			_putchar(10);
+
+		_putchar(92);
 		i++;
 	}
 	_putchar(10);
