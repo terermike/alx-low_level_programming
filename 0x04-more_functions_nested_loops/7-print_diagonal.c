@@ -1,7 +1,8 @@
 #include "main.h"
 /**
- *
- *
+ * print_diagonal - prints diagonal
+ * @n: int parameter
+ * Return: 0
  */
 void print_diagonal(int n)
 {
