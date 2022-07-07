@@ -1,7 +1,7 @@
 #include "main.h"
-/*
- *
- *
+/* print_line - prints _ according to n
+ *@n: an int parameter
+ *Return: nothing
  */
 void print_line(int n)
 {
@@ -10,7 +10,7 @@ void print_line(int n)
 	i = 0;
 	while (i < n)
 	{
-		_putchar(_);
+		_putchar('_');
 		i++;
 	}
 	_putchar(10);
