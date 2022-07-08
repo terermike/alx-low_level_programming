@@ -19,7 +19,7 @@ void print_square(int size)
 		}
 		if (i < (n - 1))
 		_putchar(10);
-	i++
+	i++;
 	}
 	_puchar(10);
 }
