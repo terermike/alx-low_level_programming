@@ -15,7 +15,7 @@ char *_strpbrk(char *s, char *accept)
 	while (s[j] != '\0')
 	{
 		k = 0;
-		while (accept[k] != 0)
+		while (accept[k] != '\0')
 		{
 			if (s[j] == accept[k])
 			{
