@@ -27,5 +27,5 @@ char *_strstr(char *haystack, char *needle)
 		j++;
 		i++;
 	}
-	return (0);
+	return (null);
 }
