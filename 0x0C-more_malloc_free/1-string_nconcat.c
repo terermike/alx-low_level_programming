@@ -1,12 +1,12 @@
 #include "main.h"
 /**
  * string_nconcat - concatenates two strings.
- * If the function fails, it should return NULL
- * If n is greater or equal to the length of s2 then use the entire string s2
- * if NULL is passed, treat it as an empty string
  * @s1: base string
  * @s2: string to concatn chars
  * @n: number of chars of s2 to concat to s1
+ * If the function fails, it should return NULL
+ * If n is greater or equal to the length of s2 then use the entire string s2
+ * if NULL is passed, treat it as an empty string
  * Return: a pointer to a newly allocated space in memory
  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
@@ -20,7 +20,6 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		s2 = " ";
 	for (i = 0; s1[i] != '\0'; i++)
 		;
-
 	ptr = malloc((i + n + 1) * sizeof(*s1));
 	if (ptr == NULL)
 		return (NULL);
