@@ -1,36 +1,47 @@
 #include "lists.h"
-#include <stdio.h>
 
 /**
- * print_listint_safe - Print a `listint_t` linked list including mem addresses
- * @head: head of linked list
- * Description: Go through the list only once.
- * Return: number of nodes in list. If fails, exit with status 98.
+ * print_listint_safe - prints a list even with loop
+ * @head: pointer to head
+ *
+ * Return: number of nodes
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	const listint_t *current;
-	size_t count;
-	const listint_t *hold;
+	int count = 0;
+	const listint_t *visited[1024];
 
-	current = head;
-	if (current == NULL)
-		exit(98);
-
-	count = 0;
-	while (current != NULL)
+	while (head)
 	{
-		hold = current;
-		current = current->next;
-		count++;
-		printf("[%p] %d\n", (void *)hold, hold->n);
-
-		if (hold < current)
+		if (is_visited(head, visited, count))
 		{
-			printf("-> [%p] %d\n", (void *)current, current->n);
+			printf("-> [%p] %d\n", (void *)head, head->n);
 			break;
 		}
+		visited[count++] = head;
+		printf("[%p] %d\n", (void *)head, head->n);
+		head = head->next;
 	}
-
 	return (count);
+}
+
+/**
+ * is_visited - check if a node is visited
+ * @node: pointer to node
+ * @visited: list of visited
+ * @count: length of visited
+ *
+ * Return: 1 if is visited and 0 otherwise
+ */
+int is_visited(const listint_t *node, const listint_t **visited, int count)
+{
+	int i = 0;
+
+	while (i < count)
+	{
+		if (node == visited[i])
+			return (1);
+		i++;
+	}
+	return (0);
 }
