@@ -1,51 +1,107 @@
 #include "main.h"
 
-#define MAXSIZE 1204
-#define SE STDERR_FILENO
+/**
+ * _errorWriteDisplay - display error for a specific action
+ *
+ * @prmFileName: file name
+ */
+void _errorWriteDisplay(char *prmFileName)
+{
+	dprintf(STDERR_FILENO, "Error: Can't write to %s\n", prmFileName);
+	exit(EXIT_WRITE_ERROR);
+}
 
 /**
- * main - create the copy bash script
- * @ac: argument count
- * @av: arguments as strings
- * Return: 0
+ * _errorReadDisplay - display error for a specific action
+ *
+ * @prmFileName: file name
  */
-int main(int ac, char *av[])
+void _errorReadDisplay(char *prmFileName)
 {
-	int input_fd, output_fd, istatus, ostatus;
-	char buf[MAXSIZE];
-	mode_t mode;
+	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", prmFileName);
+	exit(EXIT_READ_ERROR);
+}
 
-	mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
-	if (ac != 3)
-		dprintf(SE, "Usage: cp file_from file_to\n"), exit(97);
-	input_fd = open(av[1], O_RDONLY);
-	if (input_fd == -1)
-		dprintf(SE, "Error: Can't read from file %s\n", av[1]), exit(98);
-	output_fd = open(av[2], O_CREAT | O_WRONLY | O_TRUNC, mode);
-	if (output_fd == -1)
-		dprintf(SE, "Error: Can't write to %s\n", av[2]), exit(99);
-	do {
-		istatus = read(input_fd, buf, MAXSIZE);
-		if (istatus == -1)
-		{
-			dprintf(SE, "Error: Can't read from file %s\n", av[1]);
-			exit(98);
-		}
-		if (istatus > 0)
-		{
-			ostatus = write(output_fd, buf, (ssize_t) istatus);
-			if (ostatus == -1)
-			{
-				dprintf(SE, "Error: Can't write to %s\n", av[2]);
-				exit(99);
-			}
-		}
-	} while (istatus > 0);
-	istatus = close(input_fd);
-	if (istatus == -1)
-		dprintf(SE, "Error: Can't close fd %d\n", input_fd), exit(100);
-	ostatus = close(output_fd);
-	if (ostatus == -1)
-		dprintf(SE, "Error: Can't close fd %d\n", output_fd), exit(100);
+/**
+ * _checkFile - check file
+ *
+ * @prmDestFileName: destination file name
+ * @prmSourceFileName: source file name
+ */
+void _checkFile(char *prmDestFileName, char *prmSourceFileName)
+{
+	if (!prmDestFileName)
+		_errorWriteDisplay(prmDestFileName);
+	if (!prmSourceFileName)
+		_errorReadDisplay(prmSourceFileName);
+}
+
+/**
+ * _copy - copy a file to another one
+ *
+ * @prmFileNameDest: destination file name
+ * @prmFileNameSource: source file name
+ */
+void _copy(char *prmFileNameDest, char *prmFileNameSource)
+{
+	int fdFrom, fdTo, fdRead, fdWrite, fdClose;
+	char buffer[BUFFER_SIZE];
+
+	fdFrom = open(prmFileNameSource, O_RDONLY);
+	if (fdFrom == -1)
+		_errorReadDisplay(prmFileNameSource);
+	fdTo = open(
+		prmFileNameDest,
+		O_CREAT | O_WRONLY | O_TRUNC,
+		DEFAULT_WRITE_RIGHTS
+	);
+	if (fdTo == -1)
+		_errorWriteDisplay(prmFileNameDest);
+	fdRead = read(fdFrom, buffer, BUFFER_SIZE);
+	if (fdRead == -1)
+		_errorReadDisplay(prmFileNameSource);
+	while (fdRead > 0)
+	{
+		fdWrite = write(fdTo, buffer, fdRead);
+		if (fdWrite == -1)
+			_errorWriteDisplay(prmFileNameDest);
+		fdRead = read(fdFrom, buffer, BUFFER_SIZE);
+		if (fdRead == -1)
+			_errorReadDisplay(prmFileNameSource);
+	}
+	fdClose = close(fdFrom);
+	if (fdClose == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fdFrom);
+		exit(EXIT_CLOSE_ERROR);
+	}
+	fdClose = close(fdTo);
+	if (fdClose == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fdTo);
+		exit(EXIT_CLOSE_ERROR);
+	}
+}
+
+/**
+ * main - check the code for Holberton School students.
+ *
+ * @argc: argument's number
+ * @argv: argument's array
+ *
+ * Return: Always 0.
+ */
+int main(int argc, char *argv[])
+{
+	if (argc != 3)
+	{
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
+		exit(EXIT_WRONG_PARAMETER);
+	}
+
+	_checkFile(argv[2], argv[1]);
+
+	_copy(argv[2], argv[1]);
+
 	return (0);
 }
