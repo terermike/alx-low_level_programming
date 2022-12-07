@@ -7,13 +7,13 @@ def num_water_neighbors(grid, i, j):
 
     num = 0
 
-    if not grid[i - 1][j]:
+    if i <= 0 or not grid[i - 1][j]:
         num += 1
-    if not grid[i][j - 1]:
+    if j <= 0 or not grid[i][j - 1]:
         num += 1
-    if not grid[i][j + 1]:
+    if j >= len(grid[i]) - 1 or not grid[i][j + 1]:
         num += 1
-    if not grid[i + 1][j]:
+    if i >= len(grid) - 1 or not grid[i + 1][j]:
         num += 1
 
     return num
